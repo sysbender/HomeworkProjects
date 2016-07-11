@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Tue Jul 05 09:49:27 EDT 2016:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.2 - (1629631): instance a816c00e-0155-bb52-176d-00001a00f4f8 
+on database directory D:\myGitHub\HomeworkProjects\821\tp1-meng-jdbc\testdb with class loader sun.misc.Launcher$AppClassLoader@3d4eac69 
+Loaded from file:/D:/myGitHub/HomeworkProjects/821/tp1-meng-jdbc/lib/JAVADB_DRIVER_LABEL/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_71-b15
+user.dir=D:\myGitHub\HomeworkProjects\821\tp1-meng-jdbc
+os.name=Windows 7
+os.arch=amd64
+os.version=6.1
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''

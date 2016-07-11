@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+  <entry key="dbms">oracle</entry>
+  <entry key="driver">oracle.jdbc.OracleDriver</entry>
+  <entry key="database">ORCL.caspca.oraclecloud.internal</entry>
+  <entry key="username">jason</entry>
+  <entry key="password">Bdeb0171</entry>
+  <entry key="server">129.144.12.141</entry>
+  <entry key="port">1521</entry>
+
+</properties>
