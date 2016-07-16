@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.FXMLDocumentController">
+    <children>
+      <BorderPane fx:id="border" layoutX="49.0" prefHeight="200.0" prefWidth="320.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <HBox fx:id="hBoxTop" prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="btnTous" alignment="CENTER" mnemonicParsing="false" onAction="#btnChercherTousClicked" text="Chercher tous">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="12.0" />
+                     </HBox.margin></Button>
+                  <Button fx:id="btnOccasionnel" alignment="CENTER" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnChercherOccasionnelClicked" text="Chercher Occasionnel">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="12.0" />
+                     </HBox.margin></Button>
+                  <Button fx:id="btnFrequent" alignment="CENTER" layoutX="62.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnChercherFrequentClicked" text="Chercher Frequent Flyer">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="12.0" />
+                     </HBox.margin></Button>
+               </children>
+            </HBox>
+         </top>
+         <center>
+            <HBox fx:id="hBoxCenter" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox fx:id="vBoxLeft" minWidth="600.0" prefHeight="200.0" prefWidth="800.0">
+                     <children>
+                        <Label text="Passager :">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <TableView fx:id="tablePassager" minWidth="600.0" prefHeight="500.0" prefWidth="800.0">
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="5.0" />
+                           </VBox.margin>
+                           <padding>
+                              <Insets right="10.0" />
+                           </padding>
+                        </TableView>
+                        <HBox fx:id="hBoxPassager" prefHeight="50.0" prefWidth="400.0">
+                           <children>
+                              <TextField fx:id="inNom" minWidth="80.0" prefWidth="90.0" promptText="Nom">
+                                 <HBox.margin>
+                                    <Insets left="10.0" right="5.0" top="15.0" />
+                                 </HBox.margin></TextField>
+                              <TextField fx:id="inPrenom" layoutX="10.0" layoutY="10.0" minWidth="80.0" prefWidth="90.0" promptText="Prenom">
+                                 <HBox.margin>
+                                    <Insets right="5.0" top="15.0" />
+                                 </HBox.margin></TextField>
+                              <TextField fx:id="inAdresse" layoutX="60.0" layoutY="10.0" minWidth="80.0" prefWidth="120.0" promptText="Adresse">
+                                 <HBox.margin>
+                                    <Insets right="5.0" top="15.0" />
+                                 </HBox.margin></TextField>
+                              <TextField fx:id="inTelephone" layoutX="76.0" layoutY="10.0" minWidth="50.0" prefWidth="80.0" promptText="Telephone">
+                                 <HBox.margin>
+                                    <Insets right="5.0" top="15.0" />
+                                 </HBox.margin></TextField>
+                              <TextField fx:id="inVille" layoutX="85.0" layoutY="10.0" minWidth="60.0" prefWidth="70.0" promptText="Ville">
+                                 <HBox.margin>
+                                    <Insets right="5.0" top="15.0" />
+                                 </HBox.margin></TextField>
+                              <TextField fx:id="inPays" layoutX="90.0" layoutY="10.0" minWidth="50.0" prefWidth="70.0" promptText="Pays">
+                                 <HBox.margin>
+                                    <Insets right="5.0" top="15.0" />
+                                 </HBox.margin></TextField>
+                              <ChoiceBox fx:id="inStatut" prefWidth="100.0">
+                                 <HBox.margin>
+                                    <Insets top="15.0" />
+                                 </HBox.margin>
+                              </ChoiceBox>
+                           </children>
+                        </HBox>
+                        <Button fx:id="btnAddPassager" alignment="CENTER" mnemonicParsing="false" onAction="#btnAddPassagerClicked" text="Ajouter Passager">
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </VBox.margin></Button>
+                     </children>
+                  </VBox>
+                  <Separator orientation="VERTICAL" prefHeight="200.0" />
+                  <VBox fx:id="vBoxRight" prefHeight="200.0" prefWidth="150.0">
+                     <children>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Label text="Reservation pour Passager :">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label fx:id="lblCodePassager">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <TableView fx:id="tableReservation" minWidth="300.0" prefHeight="500.0" prefWidth="300.0">
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="5.0" />
+                           </VBox.margin>
+                        </TableView>
+                        <HBox fx:id="hBoxReservation" prefHeight="50.0" prefWidth="200.0">
+                           <children>
+                              <ChoiceBox fx:id="inStatut2" prefWidth="150.0">
+                                 <HBox.margin>
+                                    <Insets left="10.0" top="15.0" />
+                                 </HBox.margin>
+                              </ChoiceBox>
+                              <DatePicker fx:id="inDate">
+                                 <HBox.margin>
+                                    <Insets left="10.0" top="15.0" />
+                                 </HBox.margin>
+                              </DatePicker>
+                           </children>
+                        </HBox>
+                        <Button fx:id="btnAddReservation" alignment="CENTER" mnemonicParsing="false" onAction="#btnAddReservationClicked" text="Ajouter Reservation">
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </VBox.margin></Button>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </center>
+      </BorderPane>
+    </children>
+</AnchorPane>

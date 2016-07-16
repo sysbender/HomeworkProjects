@@ -12,12 +12,7 @@ public class OracleJdbcUtil extends JdbcUtil {
         this.dbms_properties_file = dbms + "_properties.xml";
         this.driver = "oracle.jdbc.driver.OracleDriver";
         this.readProperties();
-        // try {
         Class.forName(driver);
-//        } catch (ClassNotFoundException e) {
-//            throw new ExceptionInInitializerError(e);
-//        }
-
     }
 
     @Override
@@ -83,8 +78,9 @@ public class OracleJdbcUtil extends JdbcUtil {
         // oracle url example: "jdbc:oracle:thin:@myhost:1521:orcl"
         this.url = "jdbc:" + this.dbms + ":thin:@//" + server + ":" + port + "/" + this.database;
         System.out.println(url);
-        return DriverManager.getConnection(this.url, username, password);
-
+        Connection conn =  DriverManager.getConnection(this.url, username, password);
+        conn.setAutoCommit(false);
+        return conn;
     }
 
 }

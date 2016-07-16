@@ -1,20 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package modele;
 
-import java.util.Date;
+import java.time.LocalDate;
 
-/**
- *
- * @author jason
- */
 public class Reservation {
     private long codeReservation;
     private String statutReservation;
-    private Date dateReservation;
+    private LocalDate dateReservation;
     private long codePassager;
 
     public long getCodeReservation() {
@@ -33,11 +25,11 @@ public class Reservation {
         this.statutReservation = statutReservation;
     }
 
-    public Date getDateReservation() {
+    public LocalDate getDateReservation() {
         return dateReservation;
     }
 
-    public void setDateReservation(Date dateReservation) {
+    public void setDateReservation(LocalDate dateReservation) {
         this.dateReservation = dateReservation;
     }
 
@@ -47,8 +39,5 @@ public class Reservation {
 
     public void setCodePassager(long codePassager) {
         this.codePassager = codePassager;
-    }
-
-  
-    
+    }   
 }

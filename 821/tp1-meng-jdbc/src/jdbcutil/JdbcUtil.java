@@ -8,15 +8,16 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
 
+// pour connecter et fermer
 public abstract class JdbcUtil {
 
     // driver, url, username, password
-    public String dbms;  // derby, mysql, oracle
-    public String dbms_properties_file;
-    public String database;
-    public String username;
-    public String password;
-    public String url;
+    String dbms;  // derby, mysql, oracle
+    String dbms_properties_file;
+    String database;
+    String username;
+    String password;
+    String url;
     String driver;
     String server;
     int port;

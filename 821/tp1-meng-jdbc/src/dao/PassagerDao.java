@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dao;
 
 import java.sql.Connection;
@@ -15,19 +10,17 @@ import java.util.List;
 import jdbcutil.JdbcUtil;
 import modele.Passager;
 
-/**
- * Create : créer Read : lire Update : mettre à jour Delete : supprimer
- *
- * @author jason
- */
 public class PassagerDao {
 
+    // db connection
     private Connection conn;
 
+    //constructeur
     public PassagerDao(Connection conn) {
         this.conn = conn;
     }
 
+    // chercher tous les  passagers
     public List<Passager> lirePassagerTous() {
         List<Passager> listePassager = new ArrayList<>();
         Statement st = null;
@@ -36,8 +29,8 @@ public class PassagerDao {
         try {
             st = conn.createStatement();
             rs = st.executeQuery(sql);
-            while (rs.next()) {                
-               listePassager.add(result2Passager(rs)); 
+            while (rs.next()) {
+                listePassager.add(result2Passager(rs));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -48,10 +41,29 @@ public class PassagerDao {
         return listePassager;
     }
 
+    //chercher les passagers par statut
     public List<Passager> lirePassagerParStatut(String statut) {
-        return null;
+        List<Passager> listePassager = new ArrayList<>();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String sql = "select codepassager, nom, prenom, adresse, telephone, ville, pays, statut from passager where statut = ?";
+        try {
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, statut);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                listePassager.add(result2Passager(rs));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            JdbcUtil.close(rs, ps);
+        }
+
+        return listePassager;
     }
 
+    // inserer une liste de passager
     public void creerPassager(List<Passager> listePassager) {
         String sql = "insert into passager (nom, prenom, adresse, telephone, ville, pays, statut) values(?,?,?,?,?,?,?)";
         PreparedStatement ps = null;
@@ -68,7 +80,8 @@ public class PassagerDao {
                 ps.setString(7, p.getStatut());
                 ps.addBatch();
             }
-            int[] r = ps.executeBatch();
+            ps.executeBatch();
+            conn.commit();
 
         } catch (SQLException e) {
             throw new DaoException(e.getMessage(), e);
@@ -77,8 +90,35 @@ public class PassagerDao {
         }
 
     }
-    
-    public Passager result2Passager(ResultSet rs) throws SQLException{
+
+    // inserer un passager
+    public void creerPassager(Passager p) {
+        String sql = "insert into passager (nom, prenom, adresse, telephone, ville, pays, statut) values(?,?,?,?,?,?,?)";
+        PreparedStatement ps = null;
+        try {
+            ps = conn.prepareStatement(sql);
+
+            ps.setString(1, p.getNom());
+            ps.setString(2, p.getPrenom());
+            ps.setString(3, p.getAdresse());
+            ps.setString(4, p.getTelephone());
+            ps.setString(5, p.getVille());
+            ps.setString(6, p.getPays());
+            ps.setString(7, p.getStatut());
+
+            int r = ps.executeUpdate();
+            conn.commit();
+
+        } catch (SQLException e) {
+            throw new DaoException(e.getMessage(), e);
+        } finally {
+            JdbcUtil.close(ps);
+        }
+
+    }
+
+    //convertir resultset a passager objet
+    public Passager result2Passager(ResultSet rs) throws SQLException {
         Passager passager = new Passager();
         passager.setCodePassager(rs.getLong("codepassager"));
         passager.setNom(rs.getString("nom"));
@@ -88,8 +128,8 @@ public class PassagerDao {
         passager.setVille(rs.getString("ville"));
         passager.setPays(rs.getString("pays"));
         passager.setStatut(rs.getString("statut"));
-        
+
         return passager;
     }
-    
+
 }
